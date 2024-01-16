@@ -1,0 +1,41 @@
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+  rel="stylesheet"
+/>
+
+<div class="card">
+  <div class="left">
+    <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" />
+  </div>
+  <div class="right">
+    <h1>{{ movie.title }}</h1>
+    <div class="details">
+      <ul>
+        <li>{{ movie.release_date }}</li>
+        <li>{{ movie.runtime }} min</li>
+        <li>{{ movie.genres }}</li>
+      </ul>
+      <ul>
+        <li>
+          <span
+            *ngFor="let star of getStarArray(movie.vote_average)"
+            [ngClass]="{
+              fa: true,
+              'fa-star': star === 1,
+              'fa-star-half-o': star === 0.5,
+              'fa-star-o': star === 0
+            }"
+          ></span>
+        </li>
+        <li>
+          <strong>{{ movie.vote_average.toFixed(1) }}/10.0</strong>
+        </li>
+      </ul>
+    </div>
+    <div class="review">
+      <p>
+        {{ movie.overview }}
+      </p>
+    </div>
+  </div>
+</div>
