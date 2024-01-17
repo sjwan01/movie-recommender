@@ -1,11 +1,9 @@
-// Import necessary Angular core components
 import { Component, Input } from '@angular/core';
 
-// Define the MovieCardComponent
 @Component({
-  selector: 'app-movie-card', // HTML selector for this component
-  templateUrl: './movie-card.component.html', // HTML template file
-  styleUrls: ['./movie-card.component.css'] // CSS styles for this component
+  selector: 'app-movie-card',
+  templateUrl: './movie-card.component.html',
+  styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent {
   // Input property to receive movie data from the parent component
