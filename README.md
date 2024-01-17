@@ -6,29 +6,11 @@
 ![Docker](https://img.shields.io/badge/Containerization-Docker-blue)
 ![NGINX](https://img.shields.io/badge/Hosting-NGINX-green)
 
-## Overview
-
 This end-to-end machine learning project involves the creation of a movie recommendation web application that leverages content-based filtering techniques. The application allows users to input a movie, and based on the information of that movie from the TMDB database, the system provides recommendations of 8 similar movies. These recommendations are presented in an intuitive interface using movie cards.
 
-Below is the structure of this project:
-
-### Frontend
-
-The user interface is built using Angular, providing a responsive and dynamtic experience for users. Beyond managing user inputs and handling HTTP requests, it actively fetches autocomplete suggestions for movie names using the power of RxJS operators.
-
-### Backend
-
-The backend implementation is a Flask application integrated with PySpark to power fast querying and filtering. It is responsible for handling autocomplete requests and generating movie recommendations based on the Euclidean distance between feature vectors.
-
-### Containerization
-
-Both the frontend and backend components are encapsulated in Docker containers for consistent and reliable deployment. Dockerfiles are available in the `frontend` and `backend` folders, ensuring a portable application environment.
-
-### Deployment
-
-The deployment process is streamlined through the `docker-compose.yml` file, located in the root of this project. This orchestration simplifies the setup and management of the entire application, facilitating a seamless deployment experience.
-
----
+<p align="center">
+    <img src="demo.gif">
+</p>
 
 ## Usage
 
@@ -42,7 +24,7 @@ You may clone this repo and run the following command in the root of the project
 docker-compose up
 ```
 
----
+The application will be available on http://localhost.
 
 ## Data
 
@@ -52,7 +34,7 @@ Please review the [data license](https://opendatacommons.org/licenses/by/1-0/ind
 
 The dataset is continually updated on Kaggle, with the version used in this project last updated on January 12th, 2024. Due to its substantial size (~450MB), it is not included in this repository.
 
-To enhance recommendation quality, we have filtered the original dataset, retaining approximately 300k movies based on criteria defined in `./data/data.py`. PySpark, the Python API for Apache Spark, is employed for efficient data processing given the dataset's volume.
+To enhance recommendation quality, we have filtered the original dataset, retaining approximately 300k movies based on criteria defined in `./data/data.py`.
 
 To construct feature vectors for each movie, we initiate the process by tokenizing and vectorizing the original language, genres, and production countries data. These features are then combined with average vote, release year, revenue, runtime, and popularity data. The entire feature set undergoes `MinMaxScaler` transformation. Both the feature vectors and the original features are saved in Apache Parquet format, enabling efficient backend data retrieval.
 
@@ -67,10 +49,6 @@ Navigate to the `./data` directory in your terminal and run:
 ```bash
 python data.py
 ```
-
-This script will update and process the data, ensuring the latest information is used for recommendations in the backend.
-
----
 
 ## Recommendation Algorithm
 
